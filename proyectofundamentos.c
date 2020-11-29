@@ -40,14 +40,14 @@ int main (){
 	   }
 	   	if(menu==4){
 		   	printf("Bienvenido, en esta pestaña vamos a cambiar los precios: \n \n");
-			printf("1 -Quince años\n");
-			printf("2 -cumpleaños\n");
-			printf("3 -tu boda\n");
-			printf("4 -amigos\n");
 			int a1,a2,a3,a4;
+			printf("1 -Quince años\n");
 			scanf("%i",&a1);
+			printf("2 -cumpleaños\n");
 			scanf("%i",&a2);
+			printf("3 -tu boda\n");
 			scanf("%i",&a3);
+			printf("4 -amigos\n");
 			scanf("%i",&a4);
 			CambioPrecios(a1,a2,a3,a4);
 	   }
