@@ -51,11 +51,11 @@ int main (){
 			scanf("%i",&a4);
 			CambioPrecios(a1,a2,a3,a4);
 	   }
-	   	else{
+	   else{
 		   printf("opccion no valida\n");
 		   menu1();
 	   }
-    }
+	}
 	//Esta es la funcion que devuelve los tipos de eventos disponiles
     void TiposDeEventos(){
 		printf("Bienvenido, en esta pestagna te mostramos los eventos que manejamos: \n \n");
