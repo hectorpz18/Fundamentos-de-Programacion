@@ -16,17 +16,23 @@ int main (){
        if(menu==1){
 		   funccion1();
 	   }
+	    if(menu==2){
+		   
+	   }
+		if(menu==3){
+		   
+	   }
 	   else{
 		   printf("opccion no valida\n");
 		   menu1();
 	   }
     }
     void funccion1(){
-		printf("Bienvenido, en esta pestaña te mostramos los eventos que manejamos: \n");
-		printf("-Quince años, celebra a la cumpleañera por tan solo 8,000 pesos mexicanos por todo el día \n");
-		printf("-Celebra tu cumpleaños por tan solo 6,000 pesos mexicanos por todo el día\n");
-		printf("-Celebra el día más especial de tu vida, tu boda, por tan solo 10,000 pesos durante todo el día\n");
-		printf("-Pasa el día con tus amigos por tan solo 4,000 pesos\n");
-		printf("Una vez que haya leído los precios, desea agregar comida o renta de sillas?, 1.-Sí, 2.-No\n");
+		printf("Bienvenido, en esta pestaï¿½a te mostramos los eventos que manejamos: \n");
+		printf("-Quince aï¿½os, celebra a la cumpleaï¿½era por tan solo 8,000 pesos mexicanos por todo el dï¿½a \n");
+		printf("-Celebra tu cumpleaï¿½os por tan solo 6,000 pesos mexicanos por todo el dï¿½a\n");
+		printf("-Celebra el dï¿½a mï¿½s especial de tu vida, tu boda, por tan solo 10,000 pesos durante todo el dï¿½a\n");
+		printf("-Pasa el dï¿½a con tus amigos por tan solo 4,000 pesos\n");
+		printf("Una vez que haya leï¿½do los precios, desea agregar comida o renta de sillas?, 1.-Sï¿½, 2.-No\n");
 		
 	}
