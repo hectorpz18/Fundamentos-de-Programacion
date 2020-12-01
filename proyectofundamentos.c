@@ -11,15 +11,17 @@ int PrecioTotalComida=NULL,Preciocomida1=1000,Preciocomida2=1000,Preciocomida3=1
 int PrecioTotalsilla=NULL;
 int cantidad=NULL;
 char nombre[]="ninguno";
+int edad1=0;
 //NuevoEvento[100];
 //aqui se declaran las funcciones para que puedan ser leidas mas adelante
 void gotoxy(int x,int y);
 void cuadro(int x1,int y1,int x2,int y2);
 void menu1();
 void TiposDeEventos();
-//void Comida();
-//void Sillas();
-//void AgendarEventos();
+void Comida();
+void Sillas();
+void formulario();
+void AgendarEventos();
 //void Promociones();
 void CambioPrecios();
 //esta es la funccion principal main
@@ -76,10 +78,10 @@ void cuadro(int x1,int y1,int x2,int y2){
        	if(menu==1){
 		   TiposDeEventos();
 	   }
-	   /* if(menu==2){
-		   
+	   if(menu==2){
+		   AgendarEventos();
 	   }
-		if(menu==3){
+		/*if(menu==3){
 		   
 	   }*/
 	   	if(menu==4){
@@ -118,7 +120,7 @@ void cuadro(int x1,int y1,int x2,int y2){
 	//Esta es la funcion que devuelve los tipos de eventos disponiles
     void TiposDeEventos(){
 		system("cls");
-		printf("introduzca su nombre\n");
+		printf("introduzca su primer nombre\n");
 		scanf("%s",nombre);
 		system("cls");
 		printf("  Bienvenido, en esta pestagna te mostramos los eventos que manejamos: \n \n");
@@ -187,7 +189,7 @@ void cuadro(int x1,int y1,int x2,int y2){
 			formulario();
 		}
 		if(menu==2){
-			agenda();
+			//agenda();
 		}
 		if(menu==0){
 			menu1();
@@ -196,11 +198,31 @@ void cuadro(int x1,int y1,int x2,int y2){
 	}
 	void formulario(){
 		system("cls");
-		printf("Bienvenido,En esta pestaña podrás agendar tu evento, te anticipamos que hay que llenar un formulario\n");
-	}
-	void agenda(){
+		char nombreFormulario[]="ninguno";
+		int edad;
+		printf("Bienvenido,En esta pestaña podrás agendar tu evento, te anticipamos que hay que llenar un formulario\n\n");
+		printf("Por favor Escribe tu Primer Nombre\n");
+		scanf("%s",nombreFormulario);
+		printf("Por favor Escribe tu edad, Tienes que ser mayor de edad para poder rentar un local\n");
+		scanf("%i",&edad);
+		if(edad>18){
+		printf("Felicidades puedes seguir\n");
+			edad=edad1;
+		
+		}else{
+			printf("lo sentimos debes tener 18 años en adelante\n");
+			AgendarEventos();
+		}
+		printf("Edad: %i\n",edad1);
+		printf("Por favor Escribe qué tipo de evento quieres\n\n");
+		printf("cumpleagnos\n");
+		printf("Por favor Escribe tu Primer Nombre\n\n");
+
 
 	}
+	/*void agenda(){
+
+	}*/
 	/*
 	//esta es la funccion que maneja las promociones
 	void Promociones(){
