@@ -6,8 +6,11 @@ int quince_agnos=8000;
 int boda=10000;
 int amigos=4000;
 int salir;
-int silla=10;
-int comida=1000;
+int Preciosilla=10;
+int PrecioTotalComida=NULL,Preciocomida1=1000,Preciocomida2=1000,Preciocomida3=1000;
+int PrecioTotalsilla=NULL;
+int cantidad=NULL;
+char nombre[]="ninguno";
 //NuevoEvento[100];
 //aqui se declaran las funcciones para que puedan ser leidas mas adelante
 void gotoxy(int x,int y);
@@ -115,23 +118,26 @@ void cuadro(int x1,int y1,int x2,int y2){
 	//Esta es la funcion que devuelve los tipos de eventos disponiles
     void TiposDeEventos(){
 		system("cls");
+		printf("introduzca su nombre\n");
+		scanf("%s",nombre);
+		system("cls");
 		printf("  Bienvenido, en esta pestagna te mostramos los eventos que manejamos: \n \n");
-		printf("  1 -Quince agnos, celebra a la cumpleagnera por tan solo %i pesos mexicanos por dia \n",quince_agnos);
-		printf("  2 -Celebra tu cumpleagnos por tan solo %i pesos mexicanos por dia\n",cumpleagnos);
-		printf("  3 -Celebra el dia mas especial de tu vida, tu boda, por tan solo %i pesos por dia\n",boda);
-		printf("  4 -Pasa el día con tus amigos por tan solo %i pesos\n",amigos);
-		printf("  Una vez que haya leido los precios, desea agregar comida o renta de sillas?");
+		printf("  'Quince agnos', celebra a la cumpleagnera por tan solo %i pesos mexicanos por dia \n",quince_agnos);
+		printf("  Celebra tu 'cumpleagnos' por tan solo %i pesos mexicanos por dia\n",cumpleagnos);
+		printf("  Celebra el dia mas especial de tu vida, tu boda, por tan solo %i pesos por dia\n",boda);
+		printf("  Pasa el día con tus 'amigos' por tan solo %i pesos\n",amigos);
+		printf("  Una vez que haya leido los precios, desea agregar comida o renta de sillas?\n");
 		printf("  1.-comida \n");
 		printf("  2.-sillas \n");
 		printf("  0.-atras \n");
 		int menu;
 		scanf("%i",&menu);
-		/*if(menu==1){
-
+		if(menu==1){
+			Comida();
 		}
 		if (menu==2){
-
-		}*/
+			Silla();
+		}
 		if(menu==0){
 			menu1();
 		}
@@ -139,17 +145,63 @@ void cuadro(int x1,int y1,int x2,int y2){
 		//printf("%c", NuevoEventos[]);
 	}
 	//funccion que maneja la comida
-	/*void Comida(int cantidad){
-
+	void Comida(){
+		printf("Paquetes de comida\n");
+		gets(nombre);
+		printf("Paquete 1: Tacos al pastotor con ensalada %i pesos\n",Preciocomida1);
+		printf("Paquete 2: Espaguetis con barbacoa %i pesos\n",Preciocomida2);
+		printf("Paquete 3: lasagna con crema de elote %i pesos\n",Preciocomida3);
+		int menu;
+		scanf("%i",&menu);
+		if(menu==1){
+			PrecioTotalComida=Preciocomida1;
+			TiposDeEventos();
+		}
+		if(menu==2){
+			PrecioTotalComida=Preciocomida2;
+			TiposDeEventos();
+		}
+		if(menu==3){
+			PrecioTotalComida=Preciocomida2;
+			TiposDeEventos();
+		}
 	}
 	//funccion que maneja las sillas
-	void Silla(int cantidad){
-		printf("precio por silla %i pesos",silla)
+	void Silla(){
+		printf("precio por silla %i pesos\n",Preciosilla);
+		printf("cuantas sillas desea\n");
+		scanf("%i",&cantidad);
+		PrecioTotalsilla=Preciosilla*cantidad;
+		TiposDeEventos();
+
 	}
 	//esta es la funccion que agenda eventos
 	void AgendarEventos(){
+		system("cls");
+		printf("1.-formulario para reservar\n");
+		printf("2.-mis agendas\n");
+		printf("0.-regresar\n");
+		int menu;
+		scanf("%i",&menu);
+		if(menu==1){
+			formulario();
+		}
+		if(menu==2){
+			agenda();
+		}
+		if(menu==0){
+			menu1();
+		}
 
 	}
+	void formulario(){
+		system("cls");
+		printf("Bienvenido,En esta pestaña podrás agendar tu evento, te anticipamos que hay que llenar un formulario\n");
+	}
+	void agenda(){
+
+	}
+	/*
 	//esta es la funccion que maneja las promociones
 	void Promociones(){
 
