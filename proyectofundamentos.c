@@ -1,15 +1,24 @@
 #include<stdio.h>
 #include<windows.h>
+//variables para el formulario
+struct Myformulario
+{
+	char Nombre1[50];
+	int Edad1; 
+	char EventoElegido[50];
+
+};
+
 //variables globales
 int cumpleagnos=6000;
 int quince_agnos=8000;
 int boda=10000;
 int amigos=4000;
-int salir;
+//int salir;
 int Preciosilla=10;
-int PrecioTotalComida=NULL,Preciocomida1=1000,Preciocomida2=1000,Preciocomida3=1000;
-int PrecioTotalsilla=NULL;
-int cantidad=NULL;
+int PrecioTotalComida=0,Preciocomida1=1000,Preciocomida2=1000,Preciocomida3=1000;
+int PrecioTotalsilla=0;
+int cantidad=0;
 char nombre[]="ninguno";
 int edad1=0;
 //NuevoEvento[100];
@@ -19,7 +28,7 @@ void cuadro(int x1,int y1,int x2,int y2);
 void menu1();
 void TiposDeEventos();
 void Comida();
-void Sillas();
+void Silla();
 void formulario();
 void AgendarEventos();
 //void Promociones();
@@ -75,6 +84,7 @@ void cuadro(int x1,int y1,int x2,int y2){
 
 		int menu;
         scanf("%i",&menu);
+		fflush(stdin);
        	if(menu==1){
 		   TiposDeEventos();
 	   }
@@ -89,17 +99,22 @@ void cuadro(int x1,int y1,int x2,int y2){
 		int pin;
 		printf("  escriba la contrasegna\n");
 		scanf("%i",&pin);
+		fflush(stdin);
 			if(pin==1234){
 		   		printf("  Bienvenido, en esta pestagna vamos a cambiar los precios: \n \n");
 				int a1,a2,a3,a4;
 				printf("  1 -Quince agnos\n");
 				scanf("  %i",&a1);
+				fflush(stdin);
 				printf("  2 -cumpleagnos\n");
 				scanf("  %i",&a2);
+				fflush(stdin);
 				printf("  3 -tu boda\n");
 				scanf("  %i",&a3);
+				fflush(stdin);
 				printf("  4 -amigos\n");
 				scanf("  %i",&a4);
+				fflush(stdin);
 				CambioPrecios(a1,a2,a3,a4);
 				menu1();
 	
@@ -109,11 +124,12 @@ void cuadro(int x1,int y1,int x2,int y2){
 				   menu1();
 			   }
 	   }
+		
 	   	if(menu==0){
 		 system("exit");
 	  	}
-	   else{
-		   printf("  opccion no valida\n");
+	   if(menu>4){
+		   printf("  opccion no valida \n");
 		   menu1();
 	   }
 	}
@@ -122,18 +138,20 @@ void cuadro(int x1,int y1,int x2,int y2){
 		system("cls");
 		printf("introduzca su primer nombre\n");
 		scanf("%s",nombre);
+		fflush(stdin);
 		system("cls");
 		printf("  Bienvenido, en esta pestagna te mostramos los eventos que manejamos: \n \n");
 		printf("  'Quince agnos', celebra a la cumpleagnera por tan solo %i pesos mexicanos por dia \n",quince_agnos);
 		printf("  Celebra tu 'cumpleagnos' por tan solo %i pesos mexicanos por dia\n",cumpleagnos);
 		printf("  Celebra el dia mas especial de tu vida, tu boda, por tan solo %i pesos por dia\n",boda);
-		printf("  Pasa el día con tus 'amigos' por tan solo %i pesos\n",amigos);
+		printf("  Pasa el dia con tus 'amigos' por tan solo %i pesos\n",amigos);
 		printf("  Una vez que haya leido los precios, desea agregar comida o renta de sillas?\n");
 		printf("  1.-comida \n");
 		printf("  2.-sillas \n");
 		printf("  0.-atras \n");
 		int menu;
 		scanf("%i",&menu);
+		fflush(stdin);
 		if(menu==1){
 			Comida();
 		}
@@ -142,6 +160,9 @@ void cuadro(int x1,int y1,int x2,int y2){
 		}
 		if(menu==0){
 			menu1();
+		}
+		else{
+			printf("opcion no valida\n");
 		}
 		//este print con una variale agregara un evento que sea registrado
 		//printf("%c", NuevoEventos[]);
@@ -155,6 +176,7 @@ void cuadro(int x1,int y1,int x2,int y2){
 		printf("Paquete 3: lasagna con crema de elote %i pesos\n",Preciocomida3);
 		int menu;
 		scanf("%i",&menu);
+		fflush(stdin);
 		if(menu==1){
 			PrecioTotalComida=Preciocomida1;
 			TiposDeEventos();
@@ -166,6 +188,8 @@ void cuadro(int x1,int y1,int x2,int y2){
 		if(menu==3){
 			PrecioTotalComida=Preciocomida2;
 			TiposDeEventos();
+		}else{
+			printf("opcion no valida\n");
 		}
 	}
 	//funccion que maneja las sillas
@@ -173,6 +197,7 @@ void cuadro(int x1,int y1,int x2,int y2){
 		printf("precio por silla %i pesos\n",Preciosilla);
 		printf("cuantas sillas desea\n");
 		scanf("%i",&cantidad);
+		fflush(stdin);
 		PrecioTotalsilla=Preciosilla*cantidad;
 		TiposDeEventos();
 
@@ -185,39 +210,66 @@ void cuadro(int x1,int y1,int x2,int y2){
 		printf("0.-regresar\n");
 		int menu;
 		scanf("%i",&menu);
+		fflush(stdin);
 		if(menu==1){
 			formulario();
 		}
-		if(menu==2){
+		/*if(menu==2){
 			//agenda();
-		}
+		}*/
 		if(menu==0){
 			menu1();
 		}
 
 	}
+	//esta funccion es para el formulario
 	void formulario(){
 		system("cls");
 		char nombreFormulario[]="ninguno";
-		int edad;
-		printf("Bienvenido,En esta pestaña podrás agendar tu evento, te anticipamos que hay que llenar un formulario\n\n");
+		printf("Bienvenido,En esta pestagna podras agendar tu evento, te anticipamos que hay que llenar un formulario\n\n");
 		printf("Por favor Escribe tu Primer Nombre\n");
 		scanf("%s",nombreFormulario);
+		fflush(stdin);
 		printf("Por favor Escribe tu edad, Tienes que ser mayor de edad para poder rentar un local\n");
+		int edad;
 		scanf("%i",&edad);
+		fflush(stdin);
 		if(edad>18){
 		printf("Felicidades puedes seguir\n");
-			edad=edad1;
+			edad1=edad;
 		
 		}else{
-			printf("lo sentimos debes tener 18 años en adelante\n");
+			printf("lo sentimos debes tener 18 agnos en adelante\n");
 			AgendarEventos();
 		}
 		printf("Edad: %i\n",edad1);
-		printf("Por favor Escribe qué tipo de evento quieres\n\n");
-		printf("cumpleagnos\n");
-		printf("Por favor Escribe tu Primer Nombre\n\n");
-
+		printf("Por favor Escribe que tipo de evento quieres\n\n");
+		printf("1.-quince agnos\n");
+		printf("2.-cumpleagnos\n");
+		printf("3.-boda\n");
+		printf("4.-amigos\n");
+		int menu;
+		scanf("%i",&menu);
+		fflush(stdin);
+		if(menu==1){
+			struct Myformulario form={nombreFormulario,edad1,"quince agnos"};
+			printf("1.-amigos\n");
+		}
+		if(menu==2){
+			struct Myformulario form={nombreFormulario,edad1,"cumpleagnos"};
+			printf("2.-amigos\n");
+		}
+		if(menu==3){
+			struct Myformulario form={nombreFormulario,edad1,"boda"};
+			printf("3.-amigos\n");
+		}
+		if(menu==4){
+			struct Myformulario form={nombreFormulario,edad1,"amigos"};
+			printf("4.-amigos\n");
+		}if(menu>4 || menu<1){
+			printf("Opccion incorrecta p\n");
+		}
+		printf("hola");
 
 	}
 	/*void agenda(){
