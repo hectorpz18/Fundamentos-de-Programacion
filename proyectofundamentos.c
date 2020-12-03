@@ -298,6 +298,7 @@ void cuadro(int x1,int y1,int x2,int y2){
 			printf("No se contrato el servicio de sillas ni de mesas\n");
 		}
 		printf("#########################################################\n");
+		getch();
 	}
 	/*void agenda(){
 
