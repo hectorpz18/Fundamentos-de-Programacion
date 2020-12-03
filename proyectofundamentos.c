@@ -1,13 +1,13 @@
 #include<stdio.h>
 #include<windows.h>
+#include<conio.h>
+#include<string.h>
 //variables para el formulario
-struct Myformulario
-{
-	char Nombre1[50];
-	int Edad1; 
-	char EventoElegido[50];
 
-};
+	char Nombre1[20];
+	int Edad1=0; 
+	char EventoElegido[20];
+
 
 //variables globales
 int cumpleagnos=6000;
@@ -19,7 +19,7 @@ int Preciosilla=10;
 int PrecioTotalComida=0,Preciocomida1=1000,Preciocomida2=1000,Preciocomida3=1000;
 int PrecioTotalsilla=0;
 int cantidad=0;
-char nombre[]="ninguno";
+char nombre[20];
 int edad1=0;
 //NuevoEvento[100];
 //aqui se declaran las funcciones para que puedan ser leidas mas adelante
@@ -170,7 +170,7 @@ void cuadro(int x1,int y1,int x2,int y2){
 	//funccion que maneja la comida
 	void Comida(){
 		printf("Paquetes de comida\n");
-		gets(nombre);
+		//gets(nombre);
 		printf("Paquete 1: Tacos al pastotor con ensalada %i pesos\n",Preciocomida1);
 		printf("Paquete 2: Espaguetis con barbacoa %i pesos\n",Preciocomida2);
 		printf("Paquete 3: lasagna con crema de elote %i pesos\n",Preciocomida3);
@@ -225,7 +225,7 @@ void cuadro(int x1,int y1,int x2,int y2){
 	//esta funccion es para el formulario
 	void formulario(){
 		system("cls");
-		char nombreFormulario[]="ninguno";
+		char nombreFormulario[20];
 		printf("Bienvenido,En esta pestagna podras agendar tu evento, te anticipamos que hay que llenar un formulario\n\n");
 		printf("Por favor Escribe tu Primer Nombre\n");
 		scanf("%s",nombreFormulario);
@@ -244,33 +244,60 @@ void cuadro(int x1,int y1,int x2,int y2){
 		}
 		printf("Edad: %i\n",edad1);
 		printf("Por favor Escribe que tipo de evento quieres\n\n");
-		printf("1.-quince agnos\n");
-		printf("2.-cumpleagnos\n");
-		printf("3.-boda\n");
-		printf("4.-amigos\n");
+		printf("1.-quince agnos:$ %i\n",quince_agnos);
+		printf("2.-cumpleagnos:$ %i\n",cumpleagnos);
+		printf("3.-boda:$ %i\n",boda);
+		printf("4.-amigos:$ %i\n",amigos);
 		int menu;
 		scanf("%i",&menu);
 		fflush(stdin);
+		char quince[20]="quince agnos";
 		if(menu==1){
-			struct Myformulario form={nombreFormulario,edad1,"quince agnos"};
-			printf("1.-amigos\n");
+			for(int i=0;i<20;i++){
+				Nombre1[i]=nombreFormulario[i];
+				EventoElegido[i]=quince[i];
+			}
+			
 		}
+		char cumpleag[20]="cumpleagnos";
 		if(menu==2){
-			struct Myformulario form={nombreFormulario,edad1,"cumpleagnos"};
-			printf("2.-amigos\n");
+			for(int i=0;i<20;i++){
+				Nombre1[i]=nombreFormulario[i];
+				EventoElegido[i]=cumpleag[i];
+			}
+			
 		}
+		char bod[20]="boda";
 		if(menu==3){
-			struct Myformulario form={nombreFormulario,edad1,"boda"};
-			printf("3.-amigos\n");
+			for(int i=0;i<20;i++){
+				Nombre1[i]=nombreFormulario[i];
+				EventoElegido[i]=bod[i];
+			}
+			
 		}
+		char amig[20]="amigos";
 		if(menu==4){
-			struct Myformulario form={nombreFormulario,edad1,"amigos"};
-			printf("4.-amigos\n");
-		}if(menu>4 || menu<1){
-			printf("Opccion incorrecta p\n");
+			for(int i=0;i<20;i++){
+				Nombre1[i]=nombreFormulario[i];
+				EventoElegido[i]=amig[i];
+			}
+			
+		}if(menu>4){
+			printf("Opccion incorrecta \n");
 		}
-		printf("hola");
-
+		//system("cls");
+		printf("#########################################################\n");
+		printf("# Nombre:%s #Edad:%i #Evento:%s\n",Nombre1,edad1,EventoElegido);
+		if(strcmp(nombre,Nombre1)==0){
+		printf("#Sillas Cantidad: %i # Precio por renta de sillas:$ %i\n",cantidad,PrecioTotalsilla);
+		printf("#Comida Total: %i # \n",PrecioTotalComida);
+		if(strcmp(EventoElegido,quince)==0){
+			printf("#Total a pagar: %i\n",PrecioTotalsilla+quince_agnos+PrecioTotalComida);
+		}
+		}else{
+			printf("No se contrato el servicio de sillas ni de mesas\n");
+		}
+		printf("#########################################################\n");
 	}
 	/*void agenda(){
 
