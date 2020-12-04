@@ -2,6 +2,7 @@
 #include<windows.h>
 #include<conio.h>
 #include<string.h>
+#include<time.h>
 //variables para el formulario
 
 	char Nombre1[20];
@@ -31,6 +32,7 @@ void Comida();
 void Silla();
 void formulario();
 void AgendarEventos();
+void agenda();
 //void Promociones();
 void CambioPrecios();
 //esta es la funccion principal main
@@ -288,21 +290,51 @@ void cuadro(int x1,int y1,int x2,int y2){
 		//system("cls");
 		printf("#########################################################\n");
 		printf("# Nombre:%s #Edad:%i #Evento:%s\n",Nombre1,edad1,EventoElegido);
+		time_t tiempo = time(0);
+        struct tm *tlocal = localtime(&tiempo);
+        char output[128];
+        strftime(output,128,"%d/%m/%y %H:%M:%S",tlocal);
+        printf("Fecha de reserva: %s\n",output);
 		if(strcmp(nombre,Nombre1)==0){
 		printf("#Sillas Cantidad: %i # Precio por renta de sillas:$ %i\n",cantidad,PrecioTotalsilla);
-		printf("#Comida Total: %i # \n",PrecioTotalComida);
+		printf("#Comida Total:$ %i # \n",PrecioTotalComida);
 		if(strcmp(EventoElegido,quince)==0){
-			printf("#Total a pagar: %i\n",PrecioTotalsilla+quince_agnos+PrecioTotalComida);
+			printf("#Total a pagar:$ %i\n",PrecioTotalsilla+quince_agnos+PrecioTotalComida);
 		}
+		if(strcmp(EventoElegido,cumpleag)==0){
+			printf("#Total a pagar:$ %i\n",PrecioTotalsilla+cumpleagnos+PrecioTotalComida);
+		}
+		if(strcmp(EventoElegido,bod)==0){
+			printf("#Total a pagar:$ %i\n",PrecioTotalsilla+boda+PrecioTotalComida);
+		}
+		if(strcmp(EventoElegido,amig)==0){
+			printf("#Total a pagar:$ %i\n",PrecioTotalsilla+amigos+PrecioTotalComida);
+		}
+		//printf(time_t time(time_t*p));
 		}else{
 			printf("No se contrato el servicio de sillas ni de mesas\n");
 		}
 		printf("#########################################################\n");
-		getch();
+		
+		printf("1.-confirmar\n");
+		printf("2.-cancelar\n");
+		int comprar;
+		scanf("%i",&comprar);
+		if(comprar==1){
+			
+			FILE*Fichero;
+			Fichero = fopen("EventoElegido.txt","w+");
+			fprintf(Fichero,"%20s%i%20s",Nombre1,edad1,EventoElegido);
+			//menu1();
+		}
+		if(comprar==2){
+			menu1();
+		}
+		//getch();
 	}
-	/*void agenda(){
-
-	}*/
+	void agenda(){
+				
+	}
 	/*
 	//esta es la funccion que maneja las promociones
 	void Promociones(){
