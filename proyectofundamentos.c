@@ -236,7 +236,7 @@ void cuadro(int x1,int y1,int x2,int y2){
 		int edad;
 		scanf("%i",&edad);
 		fflush(stdin);
-		if(edad>18){
+		if(edad>=18){
 		printf("Felicidades puedes seguir\n");
 			edad1=edad;
 		
